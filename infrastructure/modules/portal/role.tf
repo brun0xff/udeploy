@@ -28,6 +28,15 @@ data "aws_iam_policy_document" "app_policy" {
   }
   statement {
     actions = [
+      "secretsmanager:GetSecretValue",
+    ]
+
+    resources = [
+      "arn:aws:secretsmanager:${var.region}:${data.aws_caller_identity.current.account_id}:secret:${var.config_path}/*",
+    ]
+  }
+  statement {
+    actions = [
       "sqs:*",
     ]
 

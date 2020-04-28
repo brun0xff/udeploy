@@ -1,0 +1,30 @@
+# This catalog lists files stored remotely based on the files current location.
+# To restore the files, run '$ cstore pull' in the same directory as this catalog file.
+# If this file is deleted without running a purge command, stored data may be orphaned 
+# without a way to recover. To get set up, visit https://github.com/turnerlabs/cstore/v4.
+# To understand the catalog, visit https://github.com/turnerlabs/cstore/v4/blob/master/docs/CATALOG.md
+version: v4
+context: udeploy
+files:
+- path: ${CSTORE_PATH}
+  store: aws-secrets
+  type: env
+  data:
+    CONSOLE_LINK: SECRET
+    DB_NAME: SECRET
+    DB_URI: SECRET
+    OAUTH_AUTH_URL: SECRET
+    OAUTH_CLIENT_ID: SECRET
+    OAUTH_CLIENT_SECRET: SECRET
+    OAUTH_REDIRECT_URL: SECRET
+    OAUTH_SCOPES: SECRET
+    OAUTH_SESSION_SIGN: SECRET
+    OAUTH_SIGN_OUT_URL: SECRET
+    OAUTH_TOKEN_URL: SECRET
+  tags:
+  - config
+  - portal
+  vaults:
+    access: env
+    secrets: aws-secrets-manager
+  versions: []
